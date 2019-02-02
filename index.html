@@ -1,10 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
+<!--<!DOCTYPE html>
+<html>
     <head>
-        <title>Ragav</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <style>
+        body {
+            color: white;
+            background-color: black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        </style>
     </head>
-<body style="background-color: black; color: white">
-    <a href="https://drive.google.com/open?id=1FrZUfvT7AmxAU-fMIFfVw7_wxlPZyXQ5">DriveLink</a>
-</body>
+    <body>
+        <header>SpellNumber</header>
+        <form>
+            Number: 
+        </form>
+        <?php include 'process.php' ?>
+    </body>
+</html>-->
+
+<html>
+<head>
+  <title>XMLHttpRequest</title>
+
+<script type="text/javascript">
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+    // XHR for Chrome/Firefox/Opera/Safari.
+    xhr.open(method, url, true);
+  } else if (typeof XDomainRequest != "undefined") {
+    // XDomainRequest for IE.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  } else {
+    // CORS not supported.
+    xhr = null;
+  }
+  return xhr;
+}
+
+// Helper method to parse the title tag from the response.
+function getTitle(text) {
+  return text.match('<title>(.*)?</title>')[1];
+}
+
+// Make the actual CORS request.
+function makeCorsRequest() {
+  // This is a sample server that supports CORS.
+  var url = 'http://ragav.cf/';
+
+  var xhr = createCORSRequest('GET', url);
+  if (!xhr) {
+    alert('CORS not supported');
+    return;
+  }
+
+  // Response handlers.
+  xhr.onload = function() {
+    var text = xhr.responseText;
+    var title = getTitle(text);
+    alert('Response from CORS request to ' + url + ': ' + title);
+  };
+
+  xhr.onerror = function() {
+    alert('Woops, there was an error making the request.');
+  };
+
+  xhr.send();
+}
+</script>
+</head>
+
+<body>
+  <input type="button" id="btn" value="Get Data" onclick="makeCorsRequest()">
+<div style='text-align: right;position: fixed;z-index:9999999;bottom: 0; width: 100%;cursor: pointer;line-height: 0;display:block !important;'><a title="Hosted on free web hosting 000webhost.com. Host your own website for FREE." target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&amp;utm_campaign=000_logo&amp;utm_medium=website&amp;utm_content=footer_img"><img src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"  alt="www.000webhost.com"></a></div></body>
 </html>
