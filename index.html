@@ -1,37 +1,27 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>UI</title>
-        <style>
-            body {
-                background-color: black;
-                color: white;
-            }
-            header {
-                height: 
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <div id="logo">
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("input").keyup(function(){
+    $.post("https://ragavweaf.000webhostapp.com/gethint.php",
+    {
+      q: $(":input").val(),
+    },
+    function(data,status){
+      $("#txtHint").html(data);
+    });
+  });
+});
+</script>
+  </head>
+  <body>
+  
+  <p><b>Start typing a name in the input field below:</b></p>
+  <form> 
+  First name: <input type="text">
+  </form>
+  <p>Suggestions: <span id="txtHint"></span></p>
 
-            </div>
-            <span>TITLE</span>
-        </header>
-        <nav class="navTop">
-            
-        </nav>
-        <div>
-            <nav class="navLeft">
-
-            </nav>
-        </div>
-        <footer>
-            
-        </footer>
-        <script>
-        
-        </script>
-    </body>
+  </body>
 </html>
